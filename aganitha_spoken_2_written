@@ -1,0 +1,47 @@
+# Global Dictionary
+
+mapping_dict = \
+{
+    'A':'A','B':'B','C':'C','D':'D','E':'E','F':'F','M':'M',
+    'one':1,'two':2,'three':3,'four':4,'five':5,'six':6,'seven':7,'eight':8,'nine':9,
+    'dollars': '$',
+    'single':['',1],'double':['',2],'triple':['',3]
+}
+
+def convert(Input):
+    
+    input_words = Input.split()    
+    output = ""
+    quantity = 0
+    
+    key_words = list(general_reference_dict.keys())
+    
+    for word in input_words:
+        
+        if word in key_words:
+            output_word = mapping_dict[word]
+            
+            if(type(output_word) != list):
+                output += str(output_word)
+            
+            else:
+                quantity = output_word[1]
+                
+    if quantity!=0:
+         output = output*quantity
+        
+    return output
+
+inputs = ['two dollars','C M','triple A']
+
+for Input in inputs:
+    output = convert(Input)
+    print(Input +' --------------- '+output)
+    
+    
+ OUTPUT
+ ------
+ 
+two dollars --------------- 2$
+C M --------------- CM
+triple A --------------- AAA
